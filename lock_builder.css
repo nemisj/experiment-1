@@ -1,0 +1,21 @@
+.matrix {
+    padding: 0;
+    width : auto;
+}
+
+.matrix .cell {
+    width  : 30px;
+    height : 30px;
+    background-repeat:no-repeat;
+    cursor : pointer;
+    padding: 0;
+    text-align: center;
+}
+
+.matrix .cell.open {
+    background-image: url(open.png);
+}
+
+.matrix .cell.locked {
+    background-image: url(locked.png);
+}

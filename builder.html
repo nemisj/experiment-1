@@ -1,0 +1,17 @@
+<html>
+	<head>
+		<script src="jquery-1.4.2.min.js"></script>
+
+		<script src="krest.js"></script>
+		<script src="lock_builder.js"></script>
+		<script src="lock_adapter.js"></script>
+	</head>
+	<body style="background-color:black">
+		<div style="color:white">before script tag</div>
+
+		<script caption="no" random="yes" type="text/lock_box" id="main_box"></script>
+
+		<button onclick="solve('main_box')">Solve</button>
+		<div id="log_box" style="color:white;margin:5px;"></div>
+	</body>
+</html>
