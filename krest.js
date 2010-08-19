@@ -6,6 +6,8 @@ var c_masks = [];
 (function build_mask() {
     var length = BIT_LENGTH;
     var size = SIZE;
+    var rmask = c_masks;
+
     for (var i=0; i<length; i++) {
         var current_col = i % size;
         var current_row = ~~( i / size );
@@ -22,8 +24,7 @@ var c_masks = [];
             h = h << 1;
         }
 
-        var rmask = c_masks[current_row] || (c_masks[current_row] = []);
-        rmask[current_col] = click_mask;
+        rmask[i] = click_mask;
     }
 })();
 
@@ -49,15 +50,12 @@ function print_bits(bits){
     return str;
 }
 
-function perform_click(mask, map, col_pos, row_pos){
-   var click_mask = c_masks[row_pos][col_pos];
-    map = map ^ click_mask;
-    return map;
+function perform_click(mask, map, pos){
+   var click_mask = c_masks[pos];
+    return map ^ click_mask;
 }
 
 function match_bits(pattern){
-
-
     return count(function(bits){
         // getting one bit at a time
 
@@ -74,7 +72,7 @@ function match_bits(pattern){
 
             if (mask) {
                 //performing click
-                map = perform_click( mask, map, col_pos, row_pos );
+                map = perform_click( mask, map, i);
 
                 if (map == pattern) {
                     return bits;
